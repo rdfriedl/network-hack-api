@@ -1,0 +1,16 @@
+# import User from "types/User.graphql"
+# import AuthPayload from "types/AuthPayload.graphql"
+
+type Query {
+	users: [User]!
+	user(id: ID!): User!
+	me: User!
+}
+
+type Mutation {
+	# Everyone can signup
+	signup(email: String!, password: String!): AuthPayload!
+
+	# Everyone can login
+	login(email: String!, password: String!): AuthPayload!
+}
