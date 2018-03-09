@@ -15,6 +15,7 @@
 		"db": "docker run --name hack-test-db --rm -p 27017:27017 -v /tmp/network-hack-api-db:/data/db mongo"
 	},
 	"dependencies": {
+		"apollo-resolvers": "^1.1.0",
 		"apollo-server-express": "^1.3.2",
 		"bcrypt-nodejs": "^0.0.3",
 		"body-parser": "^1.18.2",

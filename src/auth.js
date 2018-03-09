@@ -2,25 +2,23 @@ import jwt from "jsonwebtoken";
 
 const { JWT_SECRET, JWT_ISSUER, JWT_AUDIENCE } = process.env;
 
-export function getAuthorization(req) {
-	const authorization = req.get && req.get("Authorization");
-	if (!authorization) throw new AuthError();
-
-	return authorization.replace("Bearer ", "");
+export function createToken(user, expiresIn = "1 week") {
+	return jwt.sign({ userId: user.id }, JWT_SECRET, {
+		expiresIn,
+		issuer: JWT_ISSUER,
+		audience: JWT_AUDIENCE
+	});
 }
 
-export function getUserId(req) {
-	const token = getAuthorization(req);
-	const { userId } = jwt.verify(token, JWT_SECRET, {
+export function verifyToken(token) {
+	return jwt.verify(token, JWT_SECRET, {
 		expiresIn: "1 week",
 		issuer: JWT_ISSUER,
 		audience: JWT_AUDIENCE
 	});
-	return userId;
 }
 
-class AuthError extends Error {
-	constructor() {
-		super("Not authorized");
-	}
+export function getAuthorizationToken(req) {
+	const authorization = req.get("Authorization") || "";
+	return authorization.replace("Bearer ", "");
 }

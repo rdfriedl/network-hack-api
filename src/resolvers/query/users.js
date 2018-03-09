@@ -1,10 +1,8 @@
 import User from "../../models/User";
-import { getAuthorization } from "../../auth";
+import isAuthenticatedResolver from "../auth/isAuthenticated";
 
-const users = (parent, args, ctx) => {
-	getAuthorization(ctx);
-
-	return User.find();
+const users = async (parent, args, ctx) => {
+	return await User.find();
 };
 
-export default users;
+export default isAuthenticatedResolver.createResolver(users);

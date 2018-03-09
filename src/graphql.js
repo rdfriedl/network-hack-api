@@ -6,6 +6,7 @@ import expressPlayground from "graphql-playground-middleware-express";
 import { getGraphQLProjectConfig } from "graphql-config";
 
 import resolvers from "./resolvers/index";
+import { getAuthorizationToken, verifyToken } from "./auth";
 
 const IS_DEV = process.env.NODE_ENV === "development";
 const config = getGraphQLProjectConfig();
@@ -20,9 +21,19 @@ const router = new Router();
 
 router.use(
 	"/graphql",
-	graphqlExpress({
-		schema,
-		tracing: IS_DEV
+	graphqlExpress((req, res) => {
+		let token = getAuthorizationToken(req);
+		let payload = token ? verifyToken(token) : null;
+		let userId = payload ? payload.userId : null;
+
+		return {
+			schema,
+			context: {
+				token,
+				userId
+			},
+			tracing: IS_DEV
+		};
 	})
 );
 router.get("/schema", (req, res) => {

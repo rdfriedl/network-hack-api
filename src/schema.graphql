@@ -8,9 +8,7 @@ type Query {
 }
 
 type Mutation {
-	# Everyone can signup
 	signup(email: String!, password: String!): AuthPayload!
-
-	# Everyone can login
 	login(email: String!, password: String!): AuthPayload!
+	sendResetPasswordToken(email: String!): Boolean!
 }

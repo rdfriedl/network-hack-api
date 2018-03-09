@@ -1,9 +1,10 @@
 import User from "../../models/User";
-import { getUserId } from "../../auth";
+import isAuthenticatedResolver from "../auth/isAuthenticated";
 
-const me = async (parent, args, ctx, info) => {
-	let userId = getUserId(ctx);
-	return await User.findById(userId);
+const me = async (parent, args, ctx) => {
+	let user = await User.findById(ctx.userId);
+	if (!user) throw new Error("Failed to fetch User");
+	return user;
 };
 
-export default me;
+export default isAuthenticatedResolver.createResolver(me);
