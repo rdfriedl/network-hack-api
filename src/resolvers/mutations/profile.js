@@ -1,7 +1,7 @@
 import isAuthenticatedResolver from "../auth/isAuthenticated";
 import User from "../../models/User";
 
-async function updateProfile(parent, { data }, ctx) {
+const updateProfile = isAuthenticatedResolver.createResolver(async (parent, { data }, ctx) => {
 	let user = await User.findById(ctx.userId);
 	if (!user) throw new Error("Failed to fetch User");
 
@@ -9,6 +9,6 @@ async function updateProfile(parent, { data }, ctx) {
 	await user.save();
 
 	return user;
-}
+});
 
-export default isAuthenticatedResolver.createResolver(updateProfile);
+export { updateProfile };

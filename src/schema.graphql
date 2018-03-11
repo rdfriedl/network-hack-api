@@ -1,5 +1,5 @@
 # import User from "types/User.graphql"
-# import Computer from "types/Computer.graphql"
+# import Computer, ComputerMutations from "types/Computer.graphql"
 # import Network from "types/Network.graphql"
 # import BankAccount from "types/BankAccount.graphql"
 # import AuthPayload from "types/Auth.graphql"
@@ -18,5 +18,7 @@ type Mutation {
 	login(email: String!, password: String!): AuthPayload!
 	sendResetPasswordToken(email: String!): Boolean!
 
-	updateProfile(data: UpdateProfile!): User!
+	updateProfile(data: UpdateProfileInput!): User!
+
+	updateComputerState(id: ID!, state: PowerState): Computer!
 }

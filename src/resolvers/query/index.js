@@ -1,6 +1,13 @@
-export users from "./users";
-export user from "./user";
-export me from "./me";
-export computer from "./computer";
-export network from "./network";
-export bankAccount from "./bankAccount";
+import * as userResolvers from "./user";
+import * as computerResolvers from "./computer";
+import * as networkResolvers from "./network";
+import * as bankAccountResolvers from "./bankAccount";
+
+const rootQuery = {
+	...userResolvers,
+	...bankAccountResolvers,
+	...computerResolvers,
+	...networkResolvers
+};
+
+export default rootQuery;

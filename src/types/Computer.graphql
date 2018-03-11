@@ -5,5 +5,18 @@ type Computer {
 	id: ID!
 	owner: User!
 	name: String
+	state: ComputerState!
 	network: Network!
+}
+
+type ComputerState {
+	current: PowerState!
+	updatedAt: String!
+}
+
+enum PowerState {
+	BOOT
+	ON
+	SHUTDOWN
+	OFF
 }

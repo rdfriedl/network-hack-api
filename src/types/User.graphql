@@ -8,7 +8,7 @@ type UserProfile {
 	bio: String
 }
 
-input UpdateProfile {
+input UpdateProfileInput {
 	name: String
 	website: String
 	bio: String
