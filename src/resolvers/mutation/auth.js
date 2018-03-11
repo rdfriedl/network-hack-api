@@ -14,6 +14,7 @@ export async function signup(parent, { email, password }) {
 		email,
 		password
 	});
+	await user.setup();
 
 	const token = createToken(user);
 

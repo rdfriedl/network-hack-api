@@ -1,0 +1,8 @@
+# import User from "User.graphql"
+# import Computer from "Computer.graphql"
+
+type Network {
+	id: ID!
+	owner: User!
+	computers: [Computer]!
+}

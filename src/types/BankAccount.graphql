@@ -1,0 +1,7 @@
+# import User from "User.graphql"
+
+type BankAccount {
+	id: ID!
+	owner: User!
+	amount: Float!
+}

@@ -1,10 +1,16 @@
 # import User from "types/User.graphql"
-# import AuthPayload from "types/AuthPayload.graphql"
+# import Computer from "types/Computer.graphql"
+# import Network from "types/Network.graphql"
+# import BankAccount from "types/BankAccount.graphql"
+# import AuthPayload from "types/Auth.graphql"
 
 type Query {
 	users: [User]!
 	user(id: ID!): User!
 	me: User!
+	computer(id: ID!): Computer!
+	network(id: ID!): Network!
+	bankAccount(id: ID!): BankAccount!
 }
 
 type Mutation {

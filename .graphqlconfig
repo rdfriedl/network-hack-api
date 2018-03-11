@@ -1,6 +1,6 @@
 {
 	"schemaPath": "src/schema.graphql",
-  "includes": ["src/**/*.graphql"],
+  "includes": ["src/**/*.graphql", "src/**/*.gql"],
 	"extensions": {
 		"endpoints": {
 			"dev": "http://localhost:8000/graphql"

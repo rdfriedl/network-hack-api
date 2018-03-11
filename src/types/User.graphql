@@ -1,3 +1,7 @@
+# import Computer from "Computer.graphql"
+# import Network from "Network.graphql"
+# import BankAccount from "BankAccount.graphql"
+
 type UserProfile {
 	name: String
 	website: String
@@ -16,4 +20,7 @@ type User {
 	profile: UserProfile
 	createdAt: String!
 	updatedAt: String!
+
+	bankAccount: BankAccount!
+	networks: [Network]!
 }

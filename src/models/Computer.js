@@ -4,7 +4,7 @@ const required = true;
 
 const computerSchema = new Schema(
 	{
-		ownerUserId: { type: Schema.Types.ObjectId, ref: "User", required },
+		network: { type: Schema.Types.ObjectId, ref: "Network", required },
 		name: String,
 		state: {
 			name: { type: String, default: "off", required }, // off, boot, on, shutdown
