@@ -32,7 +32,8 @@
 		"graphql-tools": "^2.21.0",
 		"jsonwebtoken": "^8.1.1",
 		"moment": "^2.21.0",
-		"mongoose": "^5.0.7"
+		"mongoose": "^5.0.7",
+		"namor": "^1.0.1"
 	},
 	"devDependencies": {
 		"babel-cli": "^6.26.0",

@@ -11,4 +11,6 @@ type Mutation {
 	signup(email: String!, password: String!): AuthPayload!
 	login(email: String!, password: String!): AuthPayload!
 	sendResetPasswordToken(email: String!): Boolean!
+
+	updateProfile(data: UpdateProfile!): User!
 }

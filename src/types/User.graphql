@@ -1,6 +1,19 @@
+type UserProfile {
+	name: String
+	website: String
+	bio: String
+}
+
+input UpdateProfile {
+	name: String
+	website: String
+	bio: String
+}
+
 type User {
 	id: ID!
 	email: String
+	profile: UserProfile
 	createdAt: String!
 	updatedAt: String!
 }

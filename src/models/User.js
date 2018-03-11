@@ -2,6 +2,7 @@ import bcrypt from "bcrypt-nodejs";
 import crypto from "crypto";
 import mongoose, { Schema } from "mongoose";
 import { Moment } from "./types";
+import { generate as generateName } from "namor";
 
 const userSchema = new Schema(
 	{
@@ -10,10 +11,9 @@ const userSchema = new Schema(
 		passwordResetToken: String,
 
 		profile: {
-			name: String,
-			gender: String,
+			name: { type: String, default: () => generateName({ manly: true }) },
 			website: String,
-			picture: String
+			bio: String
 		}
 	},
 	{ timestamps: true }
